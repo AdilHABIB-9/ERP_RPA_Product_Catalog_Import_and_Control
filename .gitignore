@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ################################################################################
 # Added by UiPath Studio
@@ -10,3 +11,11 @@
 
 # Local Odoo credentials
 /UiPath_Odoo_CatalogSync/Data/Config.json
+=======
+.Local
+UiPath_Odoo_CatalogSync/.project/PackageBindingsMetadata.json
+UiPath_Odoo_CatalogSync/.settings/Debug/settings-9e9290da.json
+UiPath_Odoo_CatalogSync/.settings/Release/settings-9e9290da.json
+UiPath_Odoo_CatalogSync/.tmh/config.json
+UiPath_Odoo_CatalogSync/entry-points.json
+>>>>>>> origin/feature/data-validation-reporting
