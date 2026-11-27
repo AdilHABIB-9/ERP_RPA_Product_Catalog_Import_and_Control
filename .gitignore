@@ -1,0 +1,12 @@
+
+################################################################################
+# Added by UiPath Studio
+# Prevent caching and local artifacts from being committed
+################################################################################
+.local
+################################################################################
+# End of UiPath Studio common ignores
+################################################################################
+
+# Local Odoo credentials
+/UiPath_Odoo_CatalogSync/Data/Config.json
