@@ -105,7 +105,7 @@
       <AssemblyReference>System.IO.Packaging</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Init_And_LoadData" sap:VirtualizedContainerService.HintSize="886.8000000000001,984.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Init_And_LoadData" sap:VirtualizedContainerService.HintSize="886.8000000000001,1674.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -119,7 +119,7 @@
       </ui:ReadRange.Range>
     </ui:ReadRange>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Catalogue loaded successfully | Rows: &quot; &amp; out_Catalogue.Rows.Count.ToString &amp; &quot; | Columns: &quot; &amp; out_Catalogue.Columns.Count.ToString]" />
-    <If Condition="[Not out_Catalogue.Columns.Contains(&quot;Reference&quot;) OrElse Not out_Catalogue.Columns.Contains(&quot;Name&quot;) OrElse Not out_Catalogue.Columns.Contains(&quot;Price&quot;) OrElse out_Catalogue.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="451.2,560.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not out_Catalogue.Columns.Contains(&quot;Reference&quot;) OrElse Not out_Catalogue.Columns.Contains(&quot;Name&quot;) OrElse Not out_Catalogue.Columns.Contains(&quot;Price&quot;) OrElse out_Catalogue.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="451.2,569.6" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -142,5 +142,23 @@
         </Sequence>
       </If.Else>
     </If>
+    <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_RunId]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[DateTime.UtcNow.ToString("yyyyMMdd_HHmmss") &amp; "_" &amp; Guid.NewGuid().ToString("N").Substring(0, 8)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_LogPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["Data\Output\execution_log.txt"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[out_LogPath]" sap:VirtualizedContainerService.HintSize="451.2,166.4" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[DateTime.UtcNow.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;) &amp; &quot; UTC | INFO | RUN_ID=&quot; &amp; out_RunId &amp; &quot; | INITIALIZATION | Products loaded=&quot; &amp; out_Catalogue.Rows.Count.ToString]" UseDefaultEncoding="False" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Audit log initialized | Run ID: &quot; &amp; out_RunId]" />
   </Sequence>
 </Activity>
